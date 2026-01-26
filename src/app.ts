@@ -1,8 +1,9 @@
 import express from "express";
+import 'dotenv/config'
 const app = express();
-const port = 8080;
+const port = process.env.PORT;
 app.get("/", (req, res) => {
-    res.send("hello world hihi")
+    res.send("hello world hihưwwi")
 })
 app.get("/duy", (req, res) => {
     res.send("dang truonnnnnnnng duy")
