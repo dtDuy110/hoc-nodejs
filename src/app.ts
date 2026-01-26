@@ -10,6 +10,8 @@ app.set('view enngine', 'ejs');
 app.set('views', './src/views')
 // config route
 webRoutes(app);
+// config static files 
+app.use(express.static('public'));
 
 app.listen(8080, () => {
     console.log(`My app running on  ${port}`)
