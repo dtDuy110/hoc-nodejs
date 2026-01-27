@@ -8,10 +8,16 @@ const port = process.env.PORT;
 //config view engine
 app.set('view engine', 'ejs');
 app.set('views', './src/views')
-// config route
-webRoutes(app);
+
+//config req.body
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // config static files 
 app.use(express.static('public'));
+
+// config route
+webRoutes(app);
 
 app.listen(8080, () => {
     console.log(`My app running on  ${port}`)
