@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.PORT;
 
 //config view engine
-app.set('view enngine', 'ejs');
+app.set('view engine', 'ejs');
 app.set('views', './src/views')
 // config route
 webRoutes(app);
