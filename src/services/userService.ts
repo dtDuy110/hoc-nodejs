@@ -1,12 +1,56 @@
-const handleCreateUser = (
+import getConnection from "../config/database";
+
+const handleCreateUser = async (
     name: string,
     email: string,
     address: string
 ) => {
     // insert to database
-
-    //return result to client.
-    console.log(" >>>. inserted a new user");
+    const connection = await getConnection();
+    try {
+        const sql = 'INSERT INTO `users` (`name`, `email`, `address`) VALUES (?, ?, ?)';
+        const values = [name, email, address];
+        const [results, fields] = await connection.execute(sql, values);
+        return results;
+    } catch (err) {
+        console.log(err);
+        return [];
+    }
 }
-
-export { handleCreateUser }
+const getAllUsers = async () => {
+    const connection = await getConnection();
+    try {
+        const [results, fields] = await connection.query(
+            'SELECT * FROM `users`'
+        );
+        return results;
+    } catch (err) {
+        console.log(err);
+        return [];
+    }
+}
+const handleDeleteUser = async (id: number) => {
+    const connection = await getConnection();
+    try {
+        const sql = 'DELETE FROM `users` WHERE `id` = ?';
+        const values = [id];
+        const [results, fields] = await connection.execute(sql, values);
+        return results;
+    } catch (err) {
+        console.log(err);
+        return [];
+    }
+}
+const getUserById = async (id: number) => {
+    try {
+        const connection = await getConnection();
+        const sql = 'SELECT * FROM `users` WHERE `id` = ?';
+        const values = [id];
+        const [results, fields] = await connection.execute(sql, values);
+        return results[0];
+    } catch (err) {
+        console.log(err);
+        return [];
+    }
+}
+export { handleCreateUser, getAllUsers, handleDeleteUser, getUserById };
