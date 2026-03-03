@@ -1,5 +1,5 @@
 import express, { Express } from 'express';
-import { getHomePage, getCreateUserPage, postCreateUserPage, postDeleteUser, getViewUser } from '../controllers/userController';
+import { getHomePage, getCreateUserPage, postCreateUserPage, postDeleteUser, getViewUser, postUpdateUser } from '../controllers/userController';
 const router = express.Router();
 
 
@@ -11,6 +11,9 @@ const webRoutes = (app: Express) => {
     router.post("/handle-create-user", postCreateUserPage);
     router.post("/handle-delete-user/:id", postDeleteUser);
     router.get("/handle-view-user/:id", getViewUser);
+    router.post("/handle-update-user", postUpdateUser);
+
+
     app.use("/", router);
 }
 
