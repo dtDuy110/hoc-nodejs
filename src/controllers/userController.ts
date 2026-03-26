@@ -22,9 +22,8 @@ const postCreateUserPage = async (req: Request, res: Response) => {
 
     const { name, email, address } = req.body;
 
-
     // handle create user
-    await handleCreateUser(name, email, address)
+   const a= await handleCreateUser(name, email, address)
 
     return res.redirect("/")
 }
@@ -48,7 +47,7 @@ const postUpdateUser = async (req: Request, res: Response) => {
 
     const { id, name, email, address } = req.body;
     // update user by id
-    const user = await updateUser(Number(id), name, email, address);
+    const a = await updateUser(Number(id), name, email, address);
     // render viewUser.ejs
     return res.redirect("/");
 }

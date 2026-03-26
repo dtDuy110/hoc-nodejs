@@ -12,7 +12,7 @@ app.set('views', './src/views')
 
 //config req.body
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); 
 
 // config static files 
 app.use(express.static('public'));

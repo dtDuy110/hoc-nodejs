@@ -7,10 +7,10 @@ const webRoutes = (app: Express) => {
     // get
     router.get("/", getHomePage);
     router.get("/create-user", getCreateUserPage);
+    router.get("/handle-view-user/:id", getViewUser);
     // post
     router.post("/handle-create-user", postCreateUserPage);
     router.post("/handle-delete-user/:id", postDeleteUser);
-    router.get("/handle-view-user/:id", getViewUser);
     router.post("/handle-update-user", postUpdateUser);
 
 
