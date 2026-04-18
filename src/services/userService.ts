@@ -11,9 +11,11 @@ const handleCreateUser = async (
 
     const newUser = await prisma.user.create({
         data: {
-            name: name,
-            email: email,
-            address: address
+            fullName: name,
+            username: email,
+            address: address,
+            password: "",
+            accountType: ""
         }
     })
     return newUser;
@@ -26,7 +28,7 @@ const handleDeleteUser = async (id: number) => {
     const deleteUser = await prisma.user.delete({
         where: {
             id: id
-        } 
+        }
     })
     return deleteUser;
 }
@@ -44,8 +46,8 @@ const updateUser = async (id: number, name: string, email: string, address: stri
             id: id
         },
         data: {
-            name: name,
-            email: email,
+            fullName: name,
+            username: email,
             address: address
         }
     })

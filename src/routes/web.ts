@@ -1,5 +1,6 @@
 import express, { Express } from 'express';
 import { getHomePage, getCreateUserPage, postCreateUserPage, postDeleteUser, getViewUser, postUpdateUser } from '../controllers/userController';
+import { getDashboardPage } from '../controllers/admin/dashboardControllere';
 const router = express.Router();
 
 
@@ -13,6 +14,10 @@ const webRoutes = (app: Express) => {
     router.post("/handle-delete-user/:id", postDeleteUser);
     router.post("/handle-update-user", postUpdateUser);
 
+
+    //admin route
+
+    router.get("/admin",getDashboardPage);
 
     app.use("/", router);
 }
