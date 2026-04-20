@@ -1,6 +1,6 @@
 import express, { Express } from 'express';
 import { getHomePage, getCreateUserPage, postCreateUserPage, postDeleteUser, getViewUser, postUpdateUser } from '../controllers/userController';
-import { getDashboardPage } from '../controllers/admin/dashboardControllere';
+import { getAdminUserPage, getDashboardPage } from '../controllers/admin/dashboardController';
 const router = express.Router();
 
 
@@ -18,7 +18,7 @@ const webRoutes = (app: Express) => {
     //admin route
 
     router.get("/admin",getDashboardPage);
-
+    router.get("/admin/user", getAdminUserPage)
     app.use("/", router);
 }
 
